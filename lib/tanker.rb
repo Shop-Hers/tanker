@@ -470,11 +470,15 @@ module Tanker
 
     # create a unique index based on the model name and unique id
     def it_doc_id
-      type_name + ' ' + self.id.to_s
+      "#{type_name} #{index_owner} #{self.id.to_s}"
     end
 
     def type_name
       tanker_config.options[:as] || self.class.name
+    end
+
+    def index_owner
+      tanker_config.options[:owner] || ''
     end
   end
 end
